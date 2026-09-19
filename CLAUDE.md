@@ -27,7 +27,7 @@ https://uriblue725-alt.github.io/task-board/
 
 ## real-estate-app（不動産管理アプリ）
 
-タスクボードとは別の Vite プロジェクトで、`real-estate-app/` 配下に置く。コマンド（`npm run dev` / `npm run build`）はそのディレクトリで実行する。GitHub Pages のデプロイ対象外（上記デプロイ先はタスクボードのみ）。
+タスクボードとは別の Vite プロジェクトで、`real-estate-app/` 配下に置く。コマンド（`npm run dev` / `npm run build`）はそのディレクトリで実行する。GitHub Pages のデプロイ対象外（上記デプロイ先はタスクボードのみ）。デプロイは Vercel を想定し、React Router の直接アクセス用に [vercel.json](real-estate-app/vercel.json) で全 URL を `index.html` に書き換える。Vercel 側の Root Directory は `real-estate-app` にし、環境変数（下記2つ）は Vercel ダッシュボードで設定する（`vercel.json` には書かない）。
 
 - 構成: React 18 + Vite 6 + react-router-dom 7 + `@supabase/supabase-js`。Supabase のメールアドレス＋パスワード認証。
 - 環境変数: `real-estate-app/.env`（gitignore 済み）に `VITE_SUPABASE_URL` と `VITE_SUPABASE_PUBLISHABLE_KEY` を設定する。ひな形は `.env.example`。未設定だと [supabaseClient.js](real-estate-app/src/lib/supabaseClient.js) が起動時にエラーを投げる。
