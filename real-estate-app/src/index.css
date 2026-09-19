@@ -1,0 +1,14 @@
+/* アプリ全体に関わるスタイル */
+body {
+  margin: 0;
+  background-color: #f9fafb;
+  color: #111827;
+  font-family: system-ui, sans-serif;
+}
+
+/* 認証状態の確認中に表示するメッセージ */
+.loading-message {
+  margin-top: 4rem;
+  text-align: center;
+  color: #6b7280;
+}

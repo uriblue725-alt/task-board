@@ -25,6 +25,16 @@ https://uriblue725-alt.github.io/task-board/
 - イベントハンドラ関数は `handle` + 対象 + 動作のキャメルケース（例: `handleAddTask`, `handleToggleTask`, `handleDeleteTask`）。
 - state変数はキャメルケースの名詞（例: `tasks`, `inputText`）。
 
+## real-estate-app（不動産管理アプリ）
+
+タスクボードとは別の Vite プロジェクトで、`real-estate-app/` 配下に置く。コマンド（`npm run dev` / `npm run build`）はそのディレクトリで実行する。GitHub Pages のデプロイ対象外（上記デプロイ先はタスクボードのみ）。
+
+- 構成: React 18 + Vite 6 + react-router-dom 7 + `@supabase/supabase-js`。Supabase のメールアドレス＋パスワード認証。
+- 環境変数: `real-estate-app/.env`（gitignore 済み）に `VITE_SUPABASE_URL` と `VITE_SUPABASE_PUBLISHABLE_KEY` を設定する。ひな形は `.env.example`。未設定だと [supabaseClient.js](real-estate-app/src/lib/supabaseClient.js) が起動時にエラーを投げる。
+- 認証の流れ: ログイン状態は [AuthContext.jsx](real-estate-app/src/contexts/AuthContext.jsx) が保持し、未ログインのリダイレクトは [ProtectedRoute.jsx](real-estate-app/src/components/ProtectedRoute.jsx)、ログイン済みユーザーの `/login` `/signup` からの転送は各ページ側で行う。ログイン・会員登録は共通の `AuthForm` を使う。
+- 物件データは [properties.js](real-estate-app/src/data/properties.js) のダミー（Supabase のテーブルは未使用）。
+- コードコメントは日本語で書く。命名規約は上記タスクボードと同じ（ページは `pages/XxxPage.jsx`）。
+
 ## Git workflow
 
 - コードを変更したら、その都度コミットしてGitHubにプッシュすること（変更をローカルに溜め込まない）。
