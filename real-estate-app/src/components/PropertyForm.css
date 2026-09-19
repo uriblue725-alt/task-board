@@ -1,0 +1,71 @@
+.property-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.property-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.property-form-field input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+}
+
+.property-form-error {
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  background-color: #fef2f2;
+  color: #b91c1c;
+  font-size: 0.875rem;
+}
+
+.property-form-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.property-form-submit,
+.property-form-cancel {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.property-form-submit {
+  border: none;
+  background-color: #3b82f6;
+  color: #fff;
+}
+
+.property-form-submit:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+.property-form-cancel {
+  border: 1px solid #d1d5db;
+  background-color: #fff;
+}
+
+.property-form-cancel:hover:not(:disabled) {
+  background-color: #f3f4f6;
+}
+
+.property-form-submit:disabled,
+.property-form-cancel:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

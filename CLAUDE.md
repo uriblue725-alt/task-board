@@ -32,7 +32,8 @@ https://uriblue725-alt.github.io/task-board/
 - 構成: React 18 + Vite 6 + react-router-dom 7 + `@supabase/supabase-js`。Supabase のメールアドレス＋パスワード認証。
 - 環境変数: `real-estate-app/.env`（gitignore 済み）に `VITE_SUPABASE_URL` と `VITE_SUPABASE_PUBLISHABLE_KEY` を設定する。ひな形は `.env.example`。未設定だと [supabaseClient.js](real-estate-app/src/lib/supabaseClient.js) が起動時にエラーを投げる。
 - 認証の流れ: ログイン状態は [AuthContext.jsx](real-estate-app/src/contexts/AuthContext.jsx) が保持し、未ログインのリダイレクトは [ProtectedRoute.jsx](real-estate-app/src/components/ProtectedRoute.jsx)、ログイン済みユーザーの `/login` `/signup` からの転送は各ページ側で行う。ログイン・会員登録は共通の `AuthForm` を使う。
-- 物件データは [properties.js](real-estate-app/src/data/properties.js) のダミー（Supabase のテーブルは未使用）。
+- 物件データは Supabase の `properties` テーブル（物件名・家賃・エリア・間取り・登録者 `user_id`）。定義と RLS ポリシー（自分の物件だけ参照・登録・編集・削除できる）は [schema.sql](real-estate-app/supabase/schema.sql) にあり、Supabase の SQL Editor で手動実行する（CLI/マイグレーションは未使用）。
+- DB 操作は [propertiesApi.js](real-estate-app/src/lib/propertiesApi.js) に集約している（DB の `floor_plan` とアプリ内の `floorPlan` を相互変換）。`user_id` はクライアントから送らず、DB の既定値 `auth.uid()` に任せる。一覧の絞り込みも RLS に任せ、クライアント側では条件を付けない。登録・編集は共通の `PropertyForm` を使う。
 - コードコメントは日本語で書く。命名規約は上記タスクボードと同じ（ページは `pages/XxxPage.jsx`）。
 
 ## Git workflow

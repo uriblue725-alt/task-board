@@ -1,4 +1,6 @@
 .property-card {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   padding: 1.25rem;
   box-sizing: border-box;
@@ -31,4 +33,39 @@
 .property-rent {
   font-weight: 700;
   color: #2563eb;
+}
+
+/* ボタンはカードの下端に揃える */
+.property-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.property-edit-button,
+.property-delete-button {
+  padding: 0.3rem 0.8rem;
+  font-size: 0.875rem;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.property-edit-button {
+  border: 1px solid #d1d5db;
+}
+
+.property-edit-button:hover {
+  background-color: #f3f4f6;
+}
+
+.property-delete-button {
+  border: 1px solid #ef4444;
+  color: #ef4444;
+}
+
+.property-delete-button:hover {
+  background-color: #ef4444;
+  color: #fff;
 }
